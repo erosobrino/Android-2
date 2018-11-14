@@ -18,7 +18,8 @@
         </activity>
         <activity android:name=".FavoritasActivity" />
         <activity android:name=".ListadoCompletoActivity" />
-        <activity android:name=".SinopsisPeliculaActivity"></activity>
+        <activity android:name=".SinopsisPeliculaActivity" />
+        <activity android:name=".NuevaPeliculaActivity"></activity>
     </application>
 
 </manifest>

@@ -3,6 +3,7 @@ package com.example.ero.ejer5_peliculas;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -21,7 +22,9 @@ public class ListadoCompletoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_listado_completo);
         setTitle(R.string.listado_completo);
 
-        Intent itPrincipal = getIntent();
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        final Intent itPrincipal = getIntent();
         peliculas = (ArrayList<Pelicula>) itPrincipal.getExtras().get("peliculas");
 
 
@@ -33,9 +36,17 @@ public class ListadoCompletoActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent itSinopsis=new Intent(getApplicationContext(),SinopsisPeliculaActivity.class);
+                itSinopsis.putExtra("pelicula",peliculas.get(position));
                 startActivity(itSinopsis);
             }
         });
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId()==android.R.id.home){
+            onBackPressed();
+        }
+        return true;
     }
 }
